@@ -12,10 +12,11 @@ function Example() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [operand1,setOperand1] =useState(0);
-  const [operand2,setOperand2] =useState(0);
+  const [operand1,setOperand1] =useState("");
+  const [operand2,setOperand2] =useState("");
   const [operator,setOperator] =useState("");
-  let isOperatorOn = false;
+  const [isOperatorOn,setIsOperatorOn] =useState(false);
+  // let isOperatorOn = false;
   const [calcField, setCalcField] = useState(0);
  
 
@@ -24,6 +25,7 @@ function Example() {
     setCalcField(0);
     setOperand1(0);
     updateOperator("");
+    setIsOperatorOn(true);
     isOperatorOn=false;
   }
 
@@ -39,13 +41,17 @@ function Example() {
 
   const updateOperand =  (operand) =>{
     setCalcField(operand);
-     !isOperatorOn?setOperand1(operand):setOperand2(operand);
+
+     !isOperatorOn?setOperand1(operand1+operand):setOperand2(operand);
+     console.log(operand1);
+  
   }
 
   const updateOperator=(operatorArg)=>{
-    console.log("operand1 " + operand1)
-    setOperator(operator)
-    isOperatorOn=true;
+    console.log("operand1 " + operand1);
+    setOperator(operator);
+    setIsOperatorOn(true);
+    // isOperatorOn=true;
   }
 
   
@@ -81,7 +87,7 @@ function Example() {
                   <Button id="digits" onClick={()=>{updateOperand(8)}}>8</Button>
                 </Col>
                 <Col xs={3}>
-                  <Button id="digits" onClick={()=>{updateOperand(9)}}>9</Button>
+                  <Button id="digits" onClick={()=>{updateOperand("9")}}>9</Button>
                 </Col>
                 <Col xs={3}>
                   <Button id="operands" onClick={()=>{updateOperator("division")}}>/</Button>
@@ -89,13 +95,13 @@ function Example() {
               </Row>
               <Row className='g-0 my-3'>
                 <Col xs={3}>
-                  <Button id="digits" onClick={()=>{updateOperand(4)}}>4</Button>
+                  <Button id="digits" onClick={()=>{updateOperand("4")}}>4</Button>
                 </Col>
                 <Col xs={3}>
-                  <Button id="digits" onClick={()=>{updateOperand(5)}}>5</Button>
+                  <Button id="digits" onClick={()=>{updateOperand("5")}}>5</Button>
                 </Col>
                 <Col xs={3}>
-                  <Button id="digits" onClick={()=>{updateOperand(6)}}>6</Button>
+                  <Button id="digits" onClick={()=>{updateOperand("6")}}>6</Button>
                 </Col>
                 <Col xs={3}>
                   <Button id="operands" onClick={()=>{updateOperator("addition")}}>+</Button>
@@ -103,13 +109,13 @@ function Example() {
               </Row>
               <Row className='g-0'>
                 <Col xs={3}>
-                  <Button id="digits" onClick={()=>{updateOperand(1)}}>1</Button>
+                  <Button id="digits" onClick={()=>{updateOperand("1")}}>1</Button>
                 </Col>
                 <Col xs={3}>
-                  <Button id="digits" onClick={()=>{updateOperand(2)}}>2</Button>
+                  <Button id="digits" onClick={()=>{updateOperand("2")}}>2</Button>
                 </Col>
                 <Col xs={3}>
-                  <Button id="digits" onClick={()=>{updateOperand(3)}}>3</Button>
+                  <Button id="digits" onClick={()=>{updateOperand("3")}}>3</Button>
                 </Col>
                 <Col xs={3}>
                   <Button id="operands" onClick={()=>{updateOperator("subtraction")}}>-</Button>
